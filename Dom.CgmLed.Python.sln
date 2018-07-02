@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CgmLed", "CgmLed\CgmLed.pyproj", "{562474CB-E4C8-4DA2-96EC-DCE24F84AF3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{562474CB-E4C8-4DA2-96EC-DCE24F84AF3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562474CB-E4C8-4DA2-96EC-DCE24F84AF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A47C5C2-A8B9-474B-9A32-730902ECBFDF}
+	EndGlobalSection
+EndGlobal
