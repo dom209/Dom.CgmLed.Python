@@ -1,14 +1,39 @@
+from __future__ import division
+import time
+import urllib
+import json
 
-import ptvsd
+from luma.core.interface.serial import spi, noop
+from luma.core.render import canvas
+from luma.led_matrix.device import max7219
 
-ptvsd.enable_attach(secret='my_secret')
+serial = spi(port=0, device=0, gpio=noop())
+device = max7219(serial, cascaded=4, block_orientation=-90)
 
- 
+from luma.core import legacy
+from luma.core.legacy.font import proportional, CP437_FONT, LCD_FONT
 
-first_num = int(raw_input('Enter first number: '))
+while True:
+    url = "https://dmar-cgm.herokuapp.com/api/v1/entries/current.json"
+    response = urllib.urlopen(url)
+    data = json.loads(response.read())
+    sgv = data[0]['sgv']
+    direction = data[0]['direction']
+    
+    sgv_int = int(sgv)
+    mmol_float = round(sgv / 18, 1) 
+    mmol = str(mmol_float)
+    
+    if direction.lower() in "up":
+        direction = "U"
+    elif direction.lower() in "down":
+        direction = "D"
+    else:
+       direction = "F"
 
-second_num = int(raw_input('Enter second number: '))
+    mmol = mmol + direction
 
-sum = first_num + second_num
-
-print('{0} + {1} = {2}: '.format(first_num, second_num, sum))
+    with canvas(device) as draw:
+        legacy.text(draw, (0, 0), mmol, fill="white", font=proportional(CP437_FONT))
+   
+    time.sleep(300)
