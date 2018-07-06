@@ -24,9 +24,9 @@ while True:
     mmol_float = round(sgv / 18, 1) 
     mmol = str(mmol_float)
     
-    if direction.lower() in "up":
+    if "up" in direction.lower():
         direction = "U"
-    elif direction.lower() in "down":
+    elif  "down" in direction.lower():
         direction = "D"
     else:
        direction = "F"
