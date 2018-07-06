@@ -14,26 +14,31 @@ from luma.core import legacy
 from luma.core.legacy.font import proportional, CP437_FONT, LCD_FONT
 
 while True:
-    url = "https://dmar-cgm.herokuapp.com/api/v1/entries/current.json"
-    response = urllib.urlopen(url)
-    data = json.loads(response.read())
-    sgv = data[0]['sgv']
-    direction = data[0]['direction']
-    
-    sgv_int = int(sgv)
-    mmol_float = round(sgv / 18, 1) 
-    mmol = str(mmol_float)
-    
-    if "up" in direction.lower():
-        direction = "U"
-    elif  "down" in direction.lower():
-        direction = "D"
-    else:
-       direction = "F"
+    try:
+        url = "https://dmar-cgm.herokuapp.com/api/v1/entries/current.json"
+        response = urllib.urlopen(url)
+        data = json.loads(response.read())
+        sgv = data[0]['sgv']
+        direction = data[0]['direction']
+        
+        sgv_int = int(sgv)
+        mmol_float = round(sgv / 18, 1) 
+        mmol = str(mmol_float)
+        
+        if "up" in direction.lower():
+            direction = "U"
+        elif  "down" in direction.lower():
+            direction = "D"
+        else:
+           direction = "F"
 
-    mmol = mmol + direction
+        mmol = mmol + direction
 
-    with canvas(device) as draw:
-        legacy.text(draw, (0, 0), mmol, fill="white", font=proportional(CP437_FONT))
-   
-    time.sleep(300)
+        with canvas(device) as draw:
+            legacy.text(draw, (0, 0), mmol, fill="white", font=proportional(CP437_FONT))
+        
+        time.sleep(300)
+    except:
+        with canvas(device) as draw:
+            legacy.text(draw, (0, 0), "Error", fill="white", font=proportional(CP437_FONT))
+  
