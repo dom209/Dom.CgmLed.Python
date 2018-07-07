@@ -37,8 +37,8 @@ while True:
         with canvas(device) as draw:
             legacy.text(draw, (0, 0), mmol, fill="white", font=proportional(CP437_FONT))
         
-        time.sleep(300)
+        time.sleep(60)
     except:
         with canvas(device) as draw:
-            legacy.text(draw, (0, 0), "Error", fill="white", font=proportional(CP437_FONT))
+            legacy.text(draw, (0, 0), "Offline", fill="white", font=proportional(CP437_FONT))
   
