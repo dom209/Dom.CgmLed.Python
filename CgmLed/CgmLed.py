@@ -15,7 +15,7 @@ from luma.core.legacy.font import proportional, CP437_FONT, LCD_FONT
 
 while True:
     try:
-        url = "https://dmar-cgm.herokuapp.com/api/v1/entries/current.json"
+        url = "http://cgm.dmar.me.uk/api/v1/entries/current.json"
         response = urllib.urlopen(url)
         data = json.loads(response.read())
         sgv = data[0]['sgv']
